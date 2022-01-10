@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="1column"/>
+
+    <referenceContainer name="page.wrapper">
+
+
+            <referenceContainer name="page.top" >
+                <block name="headerimg" class="Opiquad\Categoriaextra\Block\Immagginetop" template="Opiquad_Categoriaextra::headerimg.phtml">
+                    <arguments>
+                        <argument name ="view_model"  xsi:type="object">
+                            Opiquad\Categoriaextra\ViewModel\Immaginetop
+                        </argument>
+                    </arguments>
+                </block>
+
+            </referenceContainer>
+
+
+        <referenceContainer name="main">
+
+            <referenceBlock name="page.main.title" remove="true" />
+            <referenceBlock name="breadcrumbs" remove="true" />
+
+
+            <block name="pagina-collezione" class="Opiquad\Collection\Block\Collezionep" template="Opiquad_Collection::pagina-collezione.phtml">
+
+                <arguments>
+                    <argument name ="view_model"  xsi:type="object">
+                        Opiquad\Collection\ViewModel\Collezionap
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <container name="footer-bottom" as="footer-bottom" after="footer" label="Footer Bottom" htmlTag="footer" htmlClass="page-footer-bottom">
+            <container name="footer-bottom-content" as="footer-bottom-content" htmlTag="div" htmlClass="footer content" />
+        </container>
+    </referenceContainer>
+   
+</layout>
+

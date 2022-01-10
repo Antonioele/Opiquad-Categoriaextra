@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Dataprovider" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="resourceModel" xsi:type="string">
+                Opiquad\Categoriaextra\Model\ResourceModel\Categoryextra\Collection
+            </argument>
+            <argument name="mainTable" xsi:type="string">categoryextra</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument xsi:type="array">
+                <item xsi:type="string" name="Categoryextra_data_source">Dataprovider</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Opiquad\categoriaextra\Model\Categoryextra">
+        <arguments>
+            <argument name="resource" xsi:type="object">Opiquad\Categoriaextra\Model\ResourceModel\Categoryextra</argument>
+        </arguments>
+    </type>
+    <virtualType name="Opiquad\Categoriaextra\ReferenceImageUpload" type="Opiquad\Categoriaextra\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">codextblog/tmp/feature</argument>
+            <argument name="basePath" xsi:type="string">codextblog/feature</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Opiquad\Categoriaextra\Controller\Adminhtml\Index\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Opiquad\Categoriaextra\ReferenceImageUpload</argument>
+        </arguments>
+    </type>
+
+    <preference for="Opiquad\Categoriaextra\Api\Data\CategoriaextraInterface"
+                type="Opiquad\Categoriaextra\Model\Data\Categoriaextra"/>
+
+    <preference for="Opiquad\Categoriaextra\Api\Data\CategoriaextraSearchResultInterface" type="Opiquad\Categoriaextra\Model\CategoriaextraSearchResult" />
+    <preference for="Opiquad\categoriaextra\Api\CategoriaextraRepositoryInterface" type="Opiquad\Categoriaextra\Model\CategoriaextraRepository" />
+</config>

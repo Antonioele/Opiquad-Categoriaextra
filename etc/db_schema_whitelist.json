@@ -1,0 +1,14 @@
+{
+  "categoryextra": {
+    "column": {
+      "entity_id": true,
+      "title": true
+    },
+    "index": {
+      "CATEGORYEXTRA_ENTITY_ID": true
+    },
+    "constraint": {
+      "PRIMARY": true
+    }
+  }
+}
